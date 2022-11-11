@@ -7,7 +7,7 @@
         game.AddCreature(new Soldier());
         game.AddCreature(new Cat());
         game.AddCreature(new Pig());
-
+        game.AddCreature(new Lol());
         game.StartFight();
         Console.ReadLine();
         game.StopFight();

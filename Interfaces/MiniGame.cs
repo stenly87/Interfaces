@@ -16,7 +16,7 @@
         running = true;
         while (running)
         {
-            Thread.Sleep(10000);
+            Thread.Sleep(1000);
             Console.WriteLine($"Раунд {++turn}!");
             RunActions();
             var deads = creatures.Where(s => !s.IsAlive).ToList();

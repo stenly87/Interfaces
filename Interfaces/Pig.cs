@@ -40,6 +40,7 @@ internal class Pig : ICreature
 
     public void TryHealSelf()
     {
+        blockFrom = null;
         ChatHelper.SendMessage(this, "Хрю");
     }
 }

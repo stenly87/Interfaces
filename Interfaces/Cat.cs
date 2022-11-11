@@ -14,6 +14,7 @@ internal class Cat : ICreature
 
     public void Attack(ICreature target)
     {
+        blockFrom = null;
         ChatHelper.SendMessage(this, $"шипит!");
         if (target.HasBlockFrom(this))
             return;
