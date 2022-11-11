@@ -19,7 +19,18 @@
             Thread.Sleep(2000);
             Console.WriteLine($"Раунд {++turn}!");
             RunActions();
+            var deads = creatures.Where(s => !s.IsAlive);
+            foreach (var dead in deads)
+            {
+                Console.WriteLine($"{dead.Name} погиб/ла.");
+                creatures.Remove(dead);
+            }
+            if (creatures.Count <= 1)
+                break;
         }
+        Console.WriteLine("Игра окончена");
+        if (creatures.Count > 0)
+            Console.WriteLine("Выжил только " + creatures.First().Name);
     }
 
     private void RunActions()
@@ -37,7 +48,7 @@
                 switch (variant)
                 {
                     case 0: cre.Attack(target); break;
-                    case 1: cre.Block(); break;
+                    case 1: cre.Block(target); break;
                     case 2: cre.RunAwayFrom(target); break;
                 }
             }

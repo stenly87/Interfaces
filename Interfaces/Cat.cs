@@ -32,7 +32,7 @@ internal class Cat : ICreature
     public void DecreaseHP(int value)
     {
         HP -= value;
-        ChatHelper.SendMessage(this, $"Кошке нанесен урон ");
+        ChatHelper.SendMessage(this, $"Кошке нанесен урон. Осталось {HP} здоровья");
         if (HP > 0 && lives > 0)
         {
             HP = 20;
@@ -43,16 +43,17 @@ internal class Cat : ICreature
 
     public bool HasBlockFrom(ICreature target)
     {
-        throw new NotImplementedException();
+        return blockFrom == target;
     }
 
     public void RunAwayFrom(ICreature target)
     {
-        throw new NotImplementedException();
+        ChatHelper.SendMessage(this, $"Кошка запрыгивает на шкаф, спасаясь от {target.Name}");
     }
 
     public void TryHealSelf()
     {
-        throw new NotImplementedException();
+        ChatHelper.SendMessage(this, "Кошка зализывает свои раны");
+        HP = 20;
     }
 }
