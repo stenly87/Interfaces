@@ -20,7 +20,7 @@ internal class Cat : ICreature
 
         ChatHelper.SendMessage(this, $"царапает {target.Name}!");
         int dmg = rnd.Next(minDmg, maxDmg);
-        target.DecreaseHP(dmg);
+        target.DecreaseHP(dmg, this);
     }
     ICreature blockFrom;
     public void Block(ICreature target)
@@ -29,8 +29,10 @@ internal class Cat : ICreature
         ChatHelper.SendMessage(this, $"следит за {target.Name}!");
     }
 
-    public void DecreaseHP(int value)
+    public void DecreaseHP(int value, ICreature damager)
     {
+        if (rnd.Next(0, 10) < 2)
+            Attack(damager);
         HP -= value;
         ChatHelper.SendMessage(this, $"Кошке нанесен урон. Осталось {HP} здоровья");
         if (HP < 0 && lives > 0)

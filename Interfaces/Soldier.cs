@@ -22,7 +22,7 @@ internal class Soldier : ICreature
         {
             int val = random.Next(0, dmg);
             ChatHelper.SendMessage(this, $"Ты не уйдешь от возмездия, мерзкая тварина! Вот тебе {val} урона!");
-            target.DecreaseHP(val);
+            target.DecreaseHP(val, this);
         }
     }
 
@@ -48,7 +48,7 @@ internal class Soldier : ICreature
         return false;
     }
 
-    public void DecreaseHP(int value)
+    public void DecreaseHP(int value, ICreature damager)
     {
         ChatHelper.SendMessage(this, $"Терплю урон: {value}");
         HP -= value;

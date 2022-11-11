@@ -13,7 +13,7 @@ internal class Pig : ICreature
     public void Attack(ICreature target)
     {
         ChatHelper.SendMessage(this, $"Хрю, {target.Name}!");
-        target.DecreaseHP(1);
+        target.DecreaseHP(1, this);
     }
 
     public void Block(ICreature target)
@@ -22,7 +22,7 @@ internal class Pig : ICreature
         ChatHelper.SendMessage(this, $"Свин повернулся к {target.Name} самой защищенной частью!");
     }
 
-    public void DecreaseHP(int value)
+    public void DecreaseHP(int value, ICreature target)
     {
         HP -= value / 2;
         ChatHelper.SendMessage(this, $"Толстокожая свинья уменьшает урон наполовину! Текущее ХП: {HP}");

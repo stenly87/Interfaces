@@ -9,5 +9,5 @@
     void Block(ICreature target);
     void RunAwayFrom(ICreature target);
     bool HasBlockFrom(ICreature target);
-    void DecreaseHP(int value);
+    void DecreaseHP(int value, ICreature damager);
 }
