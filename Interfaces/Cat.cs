@@ -26,14 +26,14 @@ internal class Cat : ICreature
     public void Block(ICreature target)
     {
         blockFrom = target;
-        ChatHelper.SendMessage(this, $"следит {target.Name}!");
+        ChatHelper.SendMessage(this, $"следит за {target.Name}!");
     }
 
     public void DecreaseHP(int value)
     {
         HP -= value;
         ChatHelper.SendMessage(this, $"Кошке нанесен урон. Осталось {HP} здоровья");
-        if (HP > 0 && lives > 0)
+        if (HP < 0 && lives > 0)
         {
             HP = 20;
             lives--;
