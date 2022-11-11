@@ -11,12 +11,14 @@ internal class Lol : ICreature
     public void Attack(ICreature target)
     {
         int val = rnd.Next(0, 3);
+        string message = null;
         switch (val)
         {
-            case 0: ChatHelper.SendMessage(this, $"делает больно {target.Name}"); break;
-            case 1: ChatHelper.SendMessage(this, $"декомпилирует {target.Name}"); break;
-            case 2: ChatHelper.SendMessage(this, $"причиняет больно иначе {target.Name}"); break;
+            case 0: message = $"делает больно {target.Name}"; break;
+            case 1: message = $"декомпилирует {target.Name}"; break;
+            case 2: message = $"причиняет больно иначе {target.Name}"; break;
         }
+        ChatHelper.SendMessage(this, message);
         target.DecreaseHP(100, this);
     }
 
