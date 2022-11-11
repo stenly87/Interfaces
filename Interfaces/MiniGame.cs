@@ -16,10 +16,10 @@
         running = true;
         while (running)
         {
-            Thread.Sleep(2000);
+            Thread.Sleep(10000);
             Console.WriteLine($"Раунд {++turn}!");
             RunActions();
-            var deads = creatures.Where(s => !s.IsAlive);
+            var deads = creatures.Where(s => !s.IsAlive).ToList();
             foreach (var dead in deads)
             {
                 Console.WriteLine($"{dead.Name} погиб/ла.");
